@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-md-4">
+    <app-add-or-update-expense (expenseCreated)="createOrUpdateExpense($event)" [expenseInfo]="currentExpense"></app-add-or-update-expense>
+  </div>
+  <div class="col-md-8">
+    <app-grid-expense [expenseData]="expenseData" (editClicked)="editClicked($event)" (newClicked)="newClicked()" (recordDeleted)="deleteClicked($event)"></app-grid-expense>
+  </div>
+</div>

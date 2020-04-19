@@ -1,0 +1,28 @@
+<h2>Expenses</h2>
+<a href="#" class="btn btn-primary mb-2" id="new-button" (click)="newRecord()">New</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Expense Owner</th>
+      <th scope="col">Description</th>
+      <th scope="col">Category</th>
+      <th scope="col">Date</th>
+      <th scope="col">Amount (₦)</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="expenseData?.length == 0"><td>No data</td></tr>
+    <tr *ngFor="let expenseInfo of expenseData">
+      <td>{{ expenseInfo.expenseOwner }}</td>
+      <td>{{ expenseInfo.description }}</td>
+      <td>{{ expenseInfo.category | enumAsString:Category}}</td>
+      <td>{{ expenseInfo.date | date:'shortDate' }}</td>
+      <td>{{ expenseInfo.amount | number: '1.2-2' }}</td>
+      <td>
+        <a href="#" class="mr-2" (click)="editRecord(expenseInfo)">Edit</a>
+        <a href="#" (click)="deleteRecord(expenseInfo)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
